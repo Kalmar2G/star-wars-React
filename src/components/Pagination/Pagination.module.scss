@@ -1,0 +1,29 @@
+.Pagination {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Tomorrow', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: #BFB930;
+  button {
+    font-family: 'Tomorrow', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+    text-align: center;
+    text-transform: capitalize;
+    color: #BFB930;
+    background: none;
+    border: none;
+    width: 55px;
+    cursor: pointer;
+  }
+}
+.HighlightButton {
+  border: 2px solid #BFB930!important;
+}

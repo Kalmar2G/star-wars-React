@@ -1,0 +1,13 @@
+.ThemeToggle {
+  width: 150px;
+  height: 107px;
+  margin-top: 91vh;
+  background-image: url('../../../public/theme-toggle.png');
+  text-align: end;
+  position: absolute;
+  .Egg {
+    width: 120px;
+    position: absolute;
+    top: 85px;
+  }
+}

@@ -1,0 +1,65 @@
+.Table {
+  opacity: .9;
+  width: 100%;
+  border-spacing: 0 16px;
+  border-collapse: separate;
+  .Hidden {
+    visibility: hidden;
+  }
+  th {
+    font-family: 'Tomorrow', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 31px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #F1F1E3;
+  }
+  th:first-child {
+    text-align: left;
+  }
+  td {
+    font-family: 'Montserrat', sans-serif;
+    height: 35px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    background: #121212;
+    border: 1px solid #9A9A9A;
+    color: white;
+  }
+  td:first-child {
+    border-spacing: 10px;
+    border-collapse: separate;
+  }
+}
+.LoadWrapper {
+  display: flex;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+}
+.LoadInfo {
+  font-family: 'Tomorrow', sans-serif;
+  overflow: hidden;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  color: #121212;
+  text-align: center;
+  -webkit-text-stroke: 1px #BFB930;
+  animation-duration: 2s;
+  animation-name: LoadAnimation;
+  animation-iteration-count: infinite;
+}
+@keyframes LoadAnimation {
+  from {
+    width: 10px;
+  }
+  to {
+    width: 125px;
+  }
+}
