@@ -1,6 +1,6 @@
-##deploy: https://star-wars-react-pied.vercel.app/
+## deploy: https://star-wars-react-pied.vercel.app/
 
-###те же звездные войны, но на реакте, без инфинити скролла и лишних фильтров на фронте (фильтрация на фронте - плохо)
+### те же звездные войны, но на реакте, без инфинити скролла и лишних фильтров на фронте (фильтрация на фронте - плохо)
 #
 #### Available Scripts
 In the project directory, you can run:
