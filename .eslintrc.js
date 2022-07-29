@@ -28,6 +28,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'react/no-array-index-key': 0,
     'no-unused-vars': 0,
     'import/prefer-default-export': 0,
     'react/react-in-jsx-scope': 0,

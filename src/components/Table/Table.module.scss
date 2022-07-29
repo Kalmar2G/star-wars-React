@@ -36,6 +36,19 @@
     border-collapse: separate;
   }
 }
+.ThFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.NoDataInfo {
+  font-family: 'Tomorrow', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  color: #121212;
+  -webkit-text-stroke: 1px #BFB930;
+}
 .LoadWrapper {
   display: flex;
   height: 500px;

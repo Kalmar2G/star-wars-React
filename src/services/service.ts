@@ -1,12 +1,7 @@
-import { Response, TableInfo } from '../types';
-import { formatDataFromBackend } from '../utils';
+import { formatDataFromBackend } from 'utils';
+import { Response, SearchParams, TableInfo } from 'types';
 
 const backendURL = 'https://swapi.dev/api/people';
-
-interface SearchParams {
-  page?: string;
-  search?:string;
-}
 
 const fetchData = async (params: SearchParams): Promise<TableInfo> => {
   const url = new URL(backendURL);

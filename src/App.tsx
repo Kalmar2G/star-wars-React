@@ -1,48 +1,56 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect, useReducer, useRef, useState,
+} from 'react';
 import classNames from 'classnames';
+import { ThemeToggle } from 'components/ThemeToggle';
+import { Pagination } from 'components/Pagination';
+import { Table } from 'components/Table';
 import { service } from './services';
 import styles from './App.module.scss';
-import { ThemeToggle } from './components/ThemeToggle';
-import { Table } from './components/Table';
-import { TableInfo } from './types';
-import { Pagination } from './components/Pagination';
+import { SearchParams, TableInfo } from './types';
 
 function App() {
+  const ref = useRef(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [darkTheme, setDarkTheme] = useState<boolean>(true);
+  const [theme, toggleTheme] = useReducer((prev) => !prev, true);
+  const [nameFilter, setNameFilter] = useState('');
   const [tableData, setTableData] = useState<TableInfo>();
-  const handleChangeTheme = async () => {
-    setDarkTheme((prev) => !prev);
-  };
-  const handleDataUpdate = (data: TableInfo) => {
-    setTableData(data);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  };
-  const handleChangePage = (page: string) => {
+
+  const handleFetchData = async ({ page }: SearchParams) => {
     setIsLoading(true);
-    service.fetchData({ page }).then((data) => {
-      if (data) {
-        handleDataUpdate(data);
-      }
-    });
+    const data = await service.fetchData({ page, search: nameFilter });
+    if (data) {
+      setTableData(data);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    }
   };
   useEffect(() => {
-    service.fetchData({}).then((data) => {
-      if (data) {
-        handleDataUpdate(data);
-      }
-    });
+    // fix react 18 strict mode double mount component
+    if (ref.current) {
+      handleFetchData({ page: '1' });
+    }
+    ref.current = false;
   }, []);
+
   return (
-    <div className={classNames(styles.App, darkTheme ? styles.DarkTheme : styles.LightTheme)}>
+    <div className={classNames(styles.App, theme ? styles.DarkTheme : styles.LightTheme)}>
       <h1 className={styles.Title}>star wars</h1>
       <div className={styles.ContentWrapper}>
-        <Table data={tableData} isLoading={isLoading} />
-        <Pagination totalPerson={tableData?.total ?? 0} onClickPage={handleChangePage} />
+        <Table
+          data={tableData}
+          isLoading={isLoading}
+          nameFilter={nameFilter}
+          setNameFilter={setNameFilter}
+          handleFetchData={handleFetchData}
+        />
+        <Pagination
+          totalPerson={tableData?.total ?? 0}
+          onClickPage={handleFetchData}
+        />
       </div>
-      <ThemeToggle onToggleClick={handleChangeTheme} />
+      <ThemeToggle onToggleClick={() => toggleTheme()} />
     </div>
   );
 }

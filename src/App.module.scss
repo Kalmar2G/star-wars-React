@@ -17,9 +17,46 @@
 }
 .LightTheme {
   background-image: url("../public/bg-light.png");
+  .Title {
+    color: #FFD600;
+    text-transform: uppercase;
+    -webkit-text-stroke: 5px #121212;
+  }
+  th {
+    color: black;
+  }
+  td {
+    background: white;
+    border: 1px solid black;
+    color: black;
+  }
+  [class*='_TextField']{
+    background: white;
+    border: 1px solid black;
+    outline: none;
+    color: black;
+  }
+  [class*='_SearchButton'] {
+    background: #9A9A9A;
+    border: 1px solid #000000;
+    border-left: none;
+  }
+  [class*='_Pagination'] {
+    color: #121212;
+    [class*='_HighlightButton'] {
+      border: 2px solid #121212!important;
+    }
+    button {
+      color: #121212;
+    }
+    filter: drop-shadow(2px 1px 1px #FFD600);
+  }
 }
 .DarkTheme {
   background-image: url("../public/bg-dark.png");
+  [class*='_Pagination'] {
+    filter: drop-shadow(2px 1px 1px rgba(162, 78, 25, 0.48));
+  }
 }
 .ContentWrapper {
   width: 60%;
